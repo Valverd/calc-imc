@@ -1,5 +1,5 @@
 import styles from './App.module.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import poweredImage from './assets/powered.png'
 import leftArrowImage from './assets/leftarrow.png'
 import { levels, calculateIMC } from './helpers/imc'
