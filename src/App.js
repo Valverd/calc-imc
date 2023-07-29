@@ -31,59 +31,57 @@ const App = () => {
 
   return (
     <div>
-      <header className={styles.main}>
-        <div className={styles.headerContainer}>
-          <img src={poweredImage} alt="título imc" width={150} />
-        </div>
-
-        <div className={styles.container}>
-          <div className={styles.leftSide}>
-            <h1>Calcule o seu IMC</h1>
-            <p>IMC é a sigla para Índice de Massa Corpórea, parâmetro adotado pela Organização Mundial de Saúde para calcular o peso ideal de cada pessoa.</p>
-            <input
-              type="number"
-              placeholder="Digite a sua altura. EX: 1.5 (em metros)"
-              value={heightField >= 0 ? heightField : ''}
-              onChange={e => { setHeightField(e.target.value) }}
-              disabled={disableFields}
-            />
-            <input
-              type="number"
-              placeholder="Digite a seu peso. EX: 80.5 (em kg)"
-              value={weightField >= 0 ? weightField : ''}
-              onChange={e => { setWeightField(e.target.value) }}
-              disabled={disableFields}
-            />
-            <button onClick={handleCalculate} disabled={disableFields}>Calcular</button>
-          </div>
-
-          <div className={styles.rightSide}>
-            {!toShow &&
-              // toShow sendo vazio retorna todos os objetos do levels
-              <div className={styles.grid}>
-                {levels.map((item, key) => {
-                  return (
-                    
-                    <GridItem key={key} item={item}/>
-                  )
-                })}
-              </div>
-            }
-
-            {toShow &&
-              // toShow povoado retorna o resultado do calculo imc com o objeto apropriado de levels
-              <div className={styles.rightBig}>
-                <div className={styles.rightArrow} onClick={handleBackButton}>
-                  <img src={leftArrowImage} alt='left arrow' width={25}/>
-                </div>
-                <GridItem item={toShow} />
-              </div>
-
-            }
-
-          </div>
-        </div>
+      <header>
+        <img src={poweredImage} alt="título imc" width={50} />
       </header>
+
+      <div className={styles.container}>
+        <div className={styles.leftSide}>
+          <h1>Calcule o seu IMC</h1>
+          <p>IMC é a sigla para Índice de Massa Corpórea, parâmetro adotado pela Organização Mundial de Saúde para calcular o peso ideal de cada pessoa.</p>
+          <input
+            type="number"
+            placeholder="Digite a sua altura. EX: 1.5 (em metros)"
+            value={heightField >= 0 ? heightField : ''}
+            onChange={e => { setHeightField(e.target.value) }}
+            disabled={disableFields}
+          />
+          <input
+            type="number"
+            placeholder="Digite a seu peso. EX: 80.5 (em kg)"
+            value={weightField >= 0 ? weightField : ''}
+            onChange={e => { setWeightField(e.target.value) }}
+            disabled={disableFields}
+          />
+          <button onClick={handleCalculate} disabled={disableFields}>Calcular</button>
+        </div>
+
+        <div className={styles.rightSide}>
+          {!toShow &&
+            // toShow sendo vazio retorna todos os objetos do levels
+            <div className={styles.grid}>
+              {levels.map((item, key) => {
+                return (
+
+                  <GridItem key={key} item={item} />
+                )
+              })}
+            </div>
+          }
+
+          {toShow &&
+            // toShow povoado retorna o resultado do calculo imc com o objeto apropriado de levels
+            <div className={styles.rightBig}>
+              <div className={styles.rightArrow} onClick={handleBackButton}>
+                <img src={leftArrowImage} alt='left arrow' width={25} />
+              </div>
+              <GridItem item={toShow} />
+            </div>
+
+          }
+
+        </div>
+      </div>
     </div>
   )
 }
